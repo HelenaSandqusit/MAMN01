@@ -3,4 +3,8 @@
     <string name="button_compass">COMPASS</string>
     <string name="button_accelerometer">ACCELEROMETER</string>
     <string name="Heading">Choose sensors to test:</string>
+    <string name="textviewH">H</string>
+    <string name="textviewX">X</string>
+    <string name="textviewZ">Z</string>
+    <string name="textviewY">Y</string>
 </resources>

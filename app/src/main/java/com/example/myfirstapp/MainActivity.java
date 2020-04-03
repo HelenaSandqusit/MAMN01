@@ -17,6 +17,11 @@ public class MainActivity extends AppCompatActivity {
     public void startCompass(View view) {
         Intent intent = new Intent(this, DisplayCompassActivity.class);
         startActivity(intent);
+    }
 
+    /** Called when the user taps the Accelerometer button */
+    public void startAccelerometer(View view) {
+        Intent intent = new Intent(this, DisplayAccelerometerActivity.class);
+        startActivity(intent);
     }
 }
