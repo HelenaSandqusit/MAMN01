@@ -1,16 +1,18 @@
 package com.example.myfirstapp;
 
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.content.Context;
 import android.content.DialogInterface;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 
 
 public class DisplayCompassActivity extends AppCompatActivity implements SensorEventListener {
@@ -26,6 +28,8 @@ public class DisplayCompassActivity extends AppCompatActivity implements SensorE
     private float[] mLastMagnetometer = new float[3];
     private boolean mLastAccelerometerSet = false;
     private boolean mLastMagnetometerSet = false;
+    Vibrator v;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,8 +67,13 @@ public class DisplayCompassActivity extends AppCompatActivity implements SensorE
 
         String where = "NW";
 
-        if (mAzimuth >= 350 || mAzimuth <= 10)
+        if (mAzimuth >= 350 || mAzimuth <= 10){
             where = "N";
+            // Get instance of Vibrator from current Context
+            v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+            long[] pattern = {0, 100, 1000};
+            v.vibrate(pattern, -1); //-1 is important
+        }
         if (mAzimuth < 350 && mAzimuth > 280)
             where = "NW";
         if (mAzimuth <= 280 && mAzimuth > 260)
@@ -79,7 +88,6 @@ public class DisplayCompassActivity extends AppCompatActivity implements SensorE
             where = "E";
         if (mAzimuth <= 80 && mAzimuth > 10)
             where = "NE";
-
 
         txt_compass.setText(mAzimuth + "° " + where);
 
@@ -131,7 +139,7 @@ public class DisplayCompassActivity extends AppCompatActivity implements SensorE
     @Override
     protected void onPause() {
         super.onPause();
-        stop();
+        mSensorManager.unregisterListener(this);
     }
 
     @Override
@@ -139,5 +147,6 @@ public class DisplayCompassActivity extends AppCompatActivity implements SensorE
         super.onResume();
         start();
     }
+
 }
 
