@@ -1,10 +1,10 @@
 <resources>
-    <string name="app_name">Hello Sensor</string>
-    <string name="button_compass">COMPASS</string>
-    <string name="button_accelerometer">ACCELEROMETER</string>
-    <string name="Heading">Choose sensors to test:</string>
-    <string name="textviewH">H</string>
+    <string name="button_accelerometer">Accelerometern</string>
+    <string name="Heading">Välj en sensor att testa:</string>
     <string name="textviewX">X</string>
     <string name="textviewZ">Z</string>
     <string name="textviewY">Y</string>
+    <string name="textviewH">Lägg ifrån dig telefonen</string>
+    <string name="app_name">Min första app</string>
+    <string name="button_compass">Kompassen</string>
 </resources>
